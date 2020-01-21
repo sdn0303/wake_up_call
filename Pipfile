@@ -7,9 +7,8 @@ verify_ssl = true
 
 [packages]
 twilio = "*"
-uvicorn = "*"
-gunicorn = "*"
 flask = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
