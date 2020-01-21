@@ -14,7 +14,9 @@ def call_me():
 
 
 def alarm_call_pubsub(event, context):
+    print(f"Event:          {event}")
     print(f"EventID:        {context.event_id}")
     print(f"EventTimeStamp: {context.timestamp}")
+
     call = call_me()
     return str(call.sid)
