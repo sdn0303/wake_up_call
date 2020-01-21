@@ -1,14 +1,17 @@
-.PONY: deploy-call-function, deploy-message-container, register-image
+.PONY: deploy-call-message-function, deploy-wake-up-call-function
 
-
-deploy-call-function:
-	gcloud functions deploy alarm_call \
+deploy-call-message-function:
+	gcloud functions deploy call-message \
 					--runtime python37 \
-					--source functions \
-					--entry-point alarm_call_pubsub \
-					--trigger-topic start_call \
+					--source functions/call_message \
+					--entry-point message \
+					--trigger-http \
 					--timeout 540
 
-deploy-message-container:
-
-register-image:
+deploy-wake-up-call-function:
+	gcloud functions deploy wake-up-call \
+					--runtime python37 \
+					--source functions/wake_up_call \
+					--entry-point wake_up_call_pubsub \
+					--trigger-topic start-call \
+					--timeout 540
